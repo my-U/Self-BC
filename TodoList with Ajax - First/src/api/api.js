@@ -19,7 +19,16 @@ export const postUser = async (name) => {
     }
 };
 
-
-// export const getUser = async () => {
-//     const 
-// }
+export const getUser = async () => {
+    try {
+        const response = await fetch(
+            `${BASE_URL}/api/users`
+        )
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
+        return response.json();
+    } catch (err) {
+        alert(`💣 Error : ${err} 💣`);
+    }
+};
