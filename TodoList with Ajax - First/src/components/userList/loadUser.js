@@ -9,11 +9,20 @@ const createDeleteButtonTemplate = () => {
             <button class="ripple user-delete-button">유저 삭제 -</button>`
 }
 
-export const loadUsers = async () => {
+export const loadUsers = async (userId = '') => {
     const users = await getUser();
 
     const $userList = document.querySelector("#user-list");
-    const userButton = users.map((user) => userButtonTemplate(user));
+    const userButton = users.map((name, _id) => userButtonTemplate(name, _id));
     
     $userList.innerHTML = userButton.join('') + createDeleteButtonTemplate();
+
+    if(!userId) {
+        const firstUser = $userList.firstChild;
+        firstUser.classList.add('active');
+    }
+    else {
+        const currentSeletedUser = document.querySelector(`#${userId}`);
+        currentSeletedUser.classList.add('active');
+    }
 }

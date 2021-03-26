@@ -32,3 +32,10 @@ export const getUser = async () => {
         alert(`💣 Error : ${err} 💣`);
     }
 };
+
+export const dltUser = (userId) => fetch(
+    `${BASE_URL}/api/users/${userId}`,
+    {
+        method: 'DELETE'
+    }
+);
