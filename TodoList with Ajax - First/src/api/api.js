@@ -19,14 +19,15 @@ export const postUser = async (name) => {
     }
 };
 
-export const getUser = async () => {
-    try{
+export const getUser = async (userId) => {
+    try {
         const response = await fetch(
-
+            `${BASE_URL}/api/users/${userId}`
         )
         if (!response.ok) {
             throw new Error(response.status);
         }
+        return response.json();
     } catch (err) {
         alert(`💣 Error : ${err} 💣`);
     }
@@ -56,7 +57,7 @@ export const dltUser = (userId) => fetch(
 export const apiAddTodo = async (title, userId) => {
     try {
         const response = await fetch(
-            `${BASE_URL}/api/users/${userId}/items/`,
+            `${BASE_URL}/api/users/${userId}/items`,
             {
                 method: 'POST',
                 headers: { 'Content-Type' : 'application/json'},
@@ -75,7 +76,7 @@ export const apiAddTodo = async (title, userId) => {
 export const apiLoadTodo = async (userId) => {
     try{
         const response = await fetch(
-            `${BASE_URL}/api/users/${userId}/items/`
+            `${BASE_URL}/api/users/${userId}/items`
         )
         if (!response.ok) {
             throw new Error(response.status);
