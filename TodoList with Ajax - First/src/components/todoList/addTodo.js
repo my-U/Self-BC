@@ -1,7 +1,7 @@
 import { apiAddTodo } from '../../api/api.js';
 import { getCurrentUser } from '../../util/localStorage.js';
 import { MIN_TODO_ITEM_LENGTH } from '../../constant/todo.js';
-import { loadUsers } from '../userList/loadUser.js';
+import { loadTodo } from './loadTodo.js';
 
 export const addTodo = async ({target, key}) => {
     if(key !== 'Enter'){
@@ -13,9 +13,10 @@ export const addTodo = async ({target, key}) => {
     }
     
     const currentUser = getCurrentUser();
-
-    apiAddTodo(target.value.trim(), currentUser);
-    await loadUsers(currentUser); // todo를 입력했을 때 현재 유저를 유지하기 위함
+    console.log(target.value);
+    console.log(currentUser);
+    await apiAddTodo(currentUser, target.value.trim());
+    await loadTodo(currentUser);
 
     target.value = '';
 }

@@ -54,20 +54,20 @@ export const dltUser = (userId) => fetch(
     }
 );
 
-export const apiAddTodo = async (title, userId) => {
+export const apiAddTodo = async (userId, title) => {
     try {
         const response = await fetch(
-            `${BASE_URL}/api/users/${userId}/items`,
+            `${BASE_URL}/api/users/${userId}/items/`,
             {
                 method: 'POST',
                 headers: { 'Content-Type' : 'application/json'},
-                body: JSON.stringify({ contents : title })
+                body: JSON.stringify({ title })
             }
-        )
+        );
         if (!response.ok) {
             throw new Error(response.status);
         }
-        return await response.json();
+        return response.json();
     } catch(err) {
         alert(`💣 Error : ${err} 💣`);
     }
@@ -76,12 +76,42 @@ export const apiAddTodo = async (title, userId) => {
 export const apiLoadTodo = async (userId) => {
     try{
         const response = await fetch(
-            `${BASE_URL}/api/users/${userId}/items`
+            `${BASE_URL}/api/users/${userId}/items`,
         )
         if (!response.ok) {
             throw new Error(response.status);
         }
         return response.json();
+    } catch (err) {
+        alert(`💣 Error : ${err} 💣`);
+    }
+}
+
+export const apiChangePriority = async (userId, itemId, priority) => {
+    try{
+        const response = await fetch(
+            `${BASE_URL}/api/users/${userId}/items/${itemId}/priority`,
+            {
+                method: 'PUT',
+                headers: { 'Content-Type' : 'application/json' },
+                body: { priority : priority },
+            }
+        )
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
+        return response.json();
+    } catch (err) {
+        alert(`💣 Error : ${err} 💣`);
+    }
+}
+
+export const apiDeleteAllTodo = (userId) => {
+    try {
+        `${BASE_URL}/api/users/:${userId}/items`,
+        {
+            method: 'DELETE'
+        };
     } catch (err) {
         alert(`💣 Error : ${err} 💣`);
     }

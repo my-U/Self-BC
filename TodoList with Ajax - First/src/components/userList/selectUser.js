@@ -4,6 +4,6 @@ import { loadUsers } from "./loadUser.js";
 export const selectUser = async (target) => {
     const userId = target.id;
 
-    await loadUsers(userId);
-    loadTodo(userId);
+    loadUsers(userId);
+    await loadTodo(userId);
 }
