@@ -16,7 +16,7 @@ export const loadUsers = async (userId = '') => {
     const user = await getUser(userId);
 
     const $userList = document.querySelector("#user-list");
-    const userButton = users.map((_id, name) => userButtonTemplate(_id, name));
+    const userButton = users.map((user) => userButtonTemplate(user));
     $userList.innerHTML = userButton.join('\n') + createDeleteButtonTemplate();
 
     if(!userId) {
@@ -30,7 +30,6 @@ export const loadUsers = async (userId = '') => {
         const currentSeletedUser = document.getElementById(`${userId}`);
         currentSeletedUser.classList.add('active');
         
-        await loadTodo(userId);
         setCurrentUser(userId);
     }
 }

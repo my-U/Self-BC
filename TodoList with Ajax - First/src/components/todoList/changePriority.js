@@ -8,7 +8,6 @@ const selectedPriority = (value) => {
         1: 'FIRST',
         2: 'SECOND'
     };
-
     return priorityContent[value]; 
 }
 

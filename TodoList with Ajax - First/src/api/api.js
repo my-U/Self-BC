@@ -106,13 +106,10 @@ export const apiChangePriority = async (userId, itemId, priority) => {
     }
 }
 
-export const apiDeleteAllTodo = (userId) => {
-    try {
-        `${BASE_URL}/api/users/:${userId}/items`,
+export const apiDeleteAllTodo = (userId) => fetch(
+        `${BASE_URL}/api/users/${userId}/items`,
         {
             method: 'DELETE'
-        };
-    } catch (err) {
-        alert(`💣 Error : ${err} 💣`);
-    }
-}
+        }
+);
+

@@ -4,7 +4,7 @@ import { loadTodo } from './loadTodo.js';
 
 export const deleteAllTodo = async () => {
     const currentUser = getCurrentUser();
-
-    await apiDeleteAllTodo(currentUser);
+  
+    apiDeleteAllTodo(currentUser);
     await loadTodo(currentUser);
 };

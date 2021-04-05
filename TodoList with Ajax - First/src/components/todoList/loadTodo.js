@@ -44,10 +44,7 @@ const renderTodo = (todos) => { // 선택된 user의 todoList 내용들을 받�
 
 export const loadTodo = async (userId) => {
     const user = await getUser(userId);
-    // console.log(user.todoList);
-    // console.log(user.todoList[0]._id);
-    const userTodo = await apiLoadTodo(userId);
-
+    
     renderTitle(user.name);
     renderTodo(user.todoList);
 }
