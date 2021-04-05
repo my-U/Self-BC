@@ -110,6 +110,6 @@ export const apiDeleteAllTodo = (userId) => fetch(
         `${BASE_URL}/api/users/${userId}/items`,
         {
             method: 'DELETE'
-        }
+        } 
 );
 
