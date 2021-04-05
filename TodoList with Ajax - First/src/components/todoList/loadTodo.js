@@ -16,18 +16,18 @@ const priorityTemplate = (priority) => {
         </select>`
 }
 
-const todoItemTemplate = ({_id, isCompleted, contents, priority}) => {
+const todoItemTemplate = (todo) => {
     return `
-    <li id="${_id}" class="${isCompleted ? 'completed' : ''}">
+    <li id="${todo._id}" class="${todo.isCompleted ? 'completed' : ''}">
         <div class="view">
             <input class="toggle" type="checkbox"/>
             <label class="label">
-                ${priorityTemplate(priority)}
-                ${contents}
+                ${priorityTemplate(todo.priority)}
+                ${todo.contents}
             </label>
             <button class="destroy"></button>
         </div>
-        <input class="edit" value="${contents}" />
+        <input class="edit" value="${todo.contents}" />
     </li>
     `;
 };
@@ -39,13 +39,15 @@ const renderTitle = (name) => {
 
 const renderTodo = (todos) => { // 선택된 user의 todoList 내용들을 받아옴.
     const $todoList = document.querySelector('.todo-list');
-    $todoList.innerHTML = todos.map((_id, isCompleted, contents, priority) => todoItemTemplate(_id, contents, isCompleted, priority));
+    $todoList.innerHTML = todos.map((todo) => todoItemTemplate(todo)).join('');
 }
 
 export const loadTodo = async (userId) => {
     const user = await getUser(userId);
+    // console.log(user.todoList);
+    // console.log(user.todoList[0]._id);
     const userTodo = await apiLoadTodo(userId);
 
     renderTitle(user.name);
-    renderTodo(userTodo);
+    renderTodo(user.todoList);
 }

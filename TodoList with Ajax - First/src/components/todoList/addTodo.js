@@ -13,8 +13,7 @@ export const addTodo = async ({target, key}) => {
     }
     
     const currentUser = getCurrentUser();
-    console.log(target.value);
-    console.log(currentUser);
+    
     await apiAddTodo(currentUser, target.value.trim());
     await loadTodo(currentUser);
 

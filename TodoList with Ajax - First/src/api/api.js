@@ -54,14 +54,14 @@ export const dltUser = (userId) => fetch(
     }
 );
 
-export const apiAddTodo = async (userId, title) => {
+export const apiAddTodo = async (userId, contents) => {
     try {
         const response = await fetch(
             `${BASE_URL}/api/users/${userId}/items/`,
             {
                 method: 'POST',
                 headers: { 'Content-Type' : 'application/json'},
-                body: JSON.stringify({ title })
+                body: JSON.stringify({ contents })
             }
         );
         if (!response.ok) {

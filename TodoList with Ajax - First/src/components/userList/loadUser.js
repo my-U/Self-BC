@@ -1,5 +1,5 @@
 import { setCurrentUser } from '../../util/localStorage.js';
-import { getUsers } from '../../api/api.js';
+import { getUser, getUsers } from '../../api/api.js';
 import { loadTodo } from '../todoList/loadTodo.js';
 
 const userButtonTemplate = ({ _id, name}) => {
@@ -13,6 +13,7 @@ const createDeleteButtonTemplate = () => {
 
 export const loadUsers = async (userId = '') => {
     const users = await getUsers();
+    const user = await getUser(userId);
 
     const $userList = document.querySelector("#user-list");
     const userButton = users.map((_id, name) => userButtonTemplate(_id, name));
@@ -28,8 +29,8 @@ export const loadUsers = async (userId = '') => {
     else {
         const currentSeletedUser = document.getElementById(`${userId}`);
         currentSeletedUser.classList.add('active');
-
+        
         await loadTodo(userId);
-        setCurrentUser(currentSeletedUser);
+        setCurrentUser(userId);
     }
 }
