@@ -1,5 +1,6 @@
 import { addTodo } from './addTodo.js';
 import { changePriority } from './changePriority.js';
+import { deleteTodo } from './deleteTodo.js';
 import { deleteAllTodo } from './deleteAllTodo.js';
 
 export const todoList = () => {
@@ -9,6 +10,7 @@ export const todoList = () => {
 
     $todoInput.addEventListener('keyup', addTodo);
     $todoList.addEventListener('change', changePriority);
+    $todoList.addEventListener('click', deleteTodo);
     $countContainer.addEventListener('click', deleteAllTodo);
     
 }

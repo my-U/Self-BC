@@ -107,9 +107,17 @@ export const apiChangePriority = async (userId, itemId, priority) => {
 }
 
 export const apiDeleteAllTodo = (userId) => fetch(
-        `${BASE_URL}/api/users/${userId}/items`,
-        {
-            method: 'DELETE'
-        } 
+    `${BASE_URL}/api/users/${userId}/items`,
+    {
+        method: 'DELETE'
+    } 
 );
+
+export const apiDeleteTodo = (userId, itemId) => fetch(
+    `${BASE_URL}/api/users/${userId}/items/${itemId}`,
+    {
+        method: 'DELETE'
+    }
+);
+
 
