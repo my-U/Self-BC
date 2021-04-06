@@ -19,6 +19,7 @@ export const changePriority = async ({ target }) => {
     const currentUser = getCurrentUser();
     const currentTarget = target.closest('li').id;
     const currentPriority = selectedPriority(target.value);
+    console.log(currentTarget);
 
     await apiChangePriority(currentUser, currentTarget, currentPriority);
     loadTodo(currentUser);

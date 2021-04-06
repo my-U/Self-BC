@@ -94,7 +94,7 @@ export const apiChangePriority = async (userId, itemId, priority) => {
             {
                 method: 'PUT',
                 headers: { 'Content-Type' : 'application/json' },
-                body: { priority : priority },
+                body: JSON.stringify({ priority : priority }),
             }
         )
         if (!response.ok) {
