@@ -120,4 +120,38 @@ export const apiDeleteTodo = (userId, itemId) => fetch(
     }
 );
 
+export const apiEditTodo = async (userId, itemId, contents) => {
+    try{
+        const response = await fetch(
+            `${BASE_URL}/api/users/${userId}/items/${itemId}`,
+            {
+                method: 'PUT',
+                headers: { 'Content-Type' : 'application/json' },
+                body: JSON.stringify({ contents }),
+            }
+        )
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
+        return response.json();
+    } catch (err) {
+        alert(`💣 Error : ${err} 💣`);
+    }
+}
 
+export const toggleTodo = async (userId, itemId) => {
+    try{
+        const response = await fetch(
+            `${BASE_URL}/api/users/${userId}/items/${itemId}/toggle`,
+            {
+                method: 'PUT',
+            }
+        )
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
+        return response.json();
+    } catch (err) {
+        alert(`💣 Error : ${err} 💣`);
+    }
+}
