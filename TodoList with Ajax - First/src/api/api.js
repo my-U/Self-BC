@@ -139,7 +139,7 @@ export const apiEditTodo = async (userId, itemId, contents) => {
     }
 }
 
-export const toggleTodo = async (userId, itemId) => {
+export const apiToggleTodo = async (userId, itemId) => {
     try{
         const response = await fetch(
             `${BASE_URL}/api/users/${userId}/items/${itemId}/toggle`,
