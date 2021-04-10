@@ -35,16 +35,27 @@ const todoItemTemplate = (todo) => {
 const renderTitle = (name) => {
     const $userNameTitle = document.querySelector('#user-title strong');
     $userNameTitle.innerText = name;
-}
+};
 
 const renderTodo = (todos) => { // 선택된 user의 todoList 내용들을 받아옴.
     const $todoList = document.querySelector('.todo-list');
     $todoList.innerHTML = todos.map((todo) => todoItemTemplate(todo)).join('');
-}
+};
 
-export const loadTodo = async (userId) => {
+const filterTodos = (todos, option) => {
+    const filter = {
+        all: () => todos,
+        active: () => todos.filter((todo) => todo.isCompleted === false),
+        completed: () => todos.filter((todo) => todo.isCompleted === true),
+
+    };
+    return filter[option](); // 뒤에 ()가 붙는 이유가 뭐지..
+};
+
+export const loadTodo = async (userId, option = ALL) => {
     const user = await getUser(userId);
-    
+    const currentFilter = await filterTodos(user.todoList, option);
+
     renderTitle(user.name);
-    renderTodo(user.todoList);
-}
+    renderTodo(currentFilter);
+};
