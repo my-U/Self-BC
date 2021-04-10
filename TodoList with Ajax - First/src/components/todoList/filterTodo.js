@@ -30,7 +30,4 @@ export const filterTodo = async (target) => {
 
     selectedTarget(target);
     loadTodo(currentUser, currentOption);
-
-    // const $todoCount = document.querySelector('.todo-count strong');
-    
 }

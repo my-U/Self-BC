@@ -1,4 +1,4 @@
-import { apiLoadTodo, getUser } from '../../api/api.js';
+import { getUser } from '../../api/api.js';
 import { ALL } from '../../constant/todo.js';
 
 const priorityTemplate = (priority) => {
@@ -52,10 +52,16 @@ const filterTodos = (todos, option) => {
     return filter[option](); // 뒤에 ()가 붙는 이유가 뭐지..
 };
 
+const renderCount = () => {
+    const $todoCount = document.querySelector('.todo-count > strong');
+    $todoCount.innerText = document.querySelectorAll('.todo-list > li').length;
+};
+
 export const loadTodo = async (userId, option = ALL) => {
     const user = await getUser(userId);
     const currentFilter = await filterTodos(user.todoList, option);
 
     renderTitle(user.name);
     renderTodo(currentFilter);
+    renderCount();
 };
