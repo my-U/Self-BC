@@ -33,6 +33,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 300;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 :focus {
