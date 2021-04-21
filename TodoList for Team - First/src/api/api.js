@@ -1,4 +1,4 @@
-import { BASE_URL } from '../api/api.js';
+import { BASE_URL } from '../constant/url.js';
 
 const option = {
     post: (contents) => ({
@@ -38,5 +38,12 @@ export const API = {
 
     getTeams: () => {
         return request(`api/teams`);
+    },
+
+    addTeam: (name) => {
+        const content = {
+            name : name
+        }
+        return request(`api/teams`, option.post(content));
     }
 }
