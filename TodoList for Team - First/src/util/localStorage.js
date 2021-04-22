@@ -5,5 +5,5 @@ export const setCurrentTeam = (currentTeam) => {
 };
 
 export const getCurrentTeam = () => {
-    localStorage.getItem(CURRENT_TEAM);
+    return localStorage.getItem(CURRENT_TEAM);
 }

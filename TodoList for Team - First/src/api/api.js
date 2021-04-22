@@ -49,5 +49,9 @@ export const API = {
 
     deleteTeam: (teamId) => {
         return request(`api/teams/${teamId}`);
+    },
+
+    addTeamMember: (teamId) => {
+        return request(`api/teams/${teamId}/members`)
     }
 }

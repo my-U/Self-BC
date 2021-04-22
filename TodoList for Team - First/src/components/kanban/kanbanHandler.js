@@ -1,4 +1,5 @@
-import { getCurrentTeam } from "../../util/localStorage";
+import { loadTeamMembers } from './loadTeamMembers.js';
 
-const currentTeam = getCurrentTeam();
-console.log(currentTeam);
+export const kanbanHandler = () => {
+    loadTeamMembers();
+}
