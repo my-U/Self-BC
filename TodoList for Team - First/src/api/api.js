@@ -52,6 +52,43 @@ export const API = {
     },
 
     addTeamMember: (teamId) => {
-        return request(`api/teams/${teamId}/members`)
+        return request(`api/teams/${teamId}/members`);
+    },
+
+    loadMemberList: (teamId, memberId) => {
+        return request(`api/teams/${teamId}/members/${memberId}`);
+    },
+
+    addMemberList: (teamId, memberId) => {
+        const contents = {
+            content : content
+        }
+        return request(`api/teams/${teamId}/members/${memberId}/items`, option.post(contents));
+    },
+
+    deleteMemberList: (teamId, memberId, itemId) => {
+        return request(`api/teams/${teamId}/members/${memberId}/items/${itemId}`, option.delete());
+    },
+
+    toggleMemberList: (teamId, memberId, itemId) => {
+        return request(`api/teams/${teamId}/members/${memberId}/items/${itemId}/toggle`, option.put());
+    },
+
+    editMemberList: (teamId, memberId, itemId) => {
+        const contents = {
+            content : content
+        }
+        return request(`api/teams/${teamId}/members/${memberId}/items/${itemId}`, option.put(contents));
+    },
+
+    priorityMemberList: (teamId, memberId, itemId) => {
+        const contents = {
+            priority : priority
+        }
+        return request(`api/teams/${teamId}/members/${memberId}/items/${itemId}/priority`, option.put(contents));
+    },
+
+    deleteMemberAllList: (teamId, memberId) => {
+        return request(`api/teams/${teamId}/members/${memberId}/items`, option.delete());
     }
 }
