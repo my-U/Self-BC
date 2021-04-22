@@ -3,7 +3,7 @@ import { API } from '../../api/api.js';
 const teamButtonTemplate = ({ _id, name }) => {
     return `
     <div id="${_id} "class="team-card-container">
-            <a href="/kanban.html" class="card">
+            <a href="./kanban.html" class="card">
             <div class="card-title">
               ${name}
             </div>

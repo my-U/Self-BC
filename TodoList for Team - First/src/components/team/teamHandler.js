@@ -1,13 +1,13 @@
 import { addTeam } from './addTeam.js';
 import { setCurrentTeam } from '../../util/localStorage.js';
 
-const teamList = ({target}) => {
+const teamList = ({ target }) => {
     if(target.classList.contains('ripple')) {
         addTeam();
     }
     if(target.classList.contains('card')) {
-        setCurrnetTeam(target.id);
-        console.log(target)
+        const selectedTeam = target.closest('div');
+        setCurrentTeam(selectedTeam.id);
     }
 }
 
