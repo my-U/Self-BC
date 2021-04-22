@@ -1,9 +1,18 @@
 import { addTeam } from './addTeam.js';
+import { setCurrentTeam } from '../../util/localStorage.js';
+
+const teamList = ({target}) => {
+    if(target.classList.contains('ripple')) {
+        addTeam();
+    }
+    if(target.classList.contains('card')) {
+        setCurrnetTeam(target.id);
+        console.log(target)
+    }
+}
 
 export const teamHandler = () => {
-    const $teamAddButton = document.querySelector('#add-team-button');
-
+    const $teamList = document.querySelector('.team-list-container');
     
-    $teamAddButton.addEventListener('click', addTeam);
-    
+    $teamList.addEventListener('click', teamList);
 }

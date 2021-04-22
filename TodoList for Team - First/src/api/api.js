@@ -45,5 +45,9 @@ export const API = {
             name : name
         }
         return request(`api/teams`, option.post(content));
+    },
+
+    deleteTeam: (teamId) => {
+        return request(`api/teams/${teamId}`);
     }
 }

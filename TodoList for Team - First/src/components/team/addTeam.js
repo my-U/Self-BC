@@ -1,5 +1,5 @@
 import { API } from '../../api/api.js';
-import { MIN_TEAM_NAME_LENGTH } from '../../constant/teamLength.js';
+import { MIN_TEAM_NAME_LENGTH } from '../../constant/teamConstant.js';
 import { loadTeams } from './loadTeam.js';
 
 export const addTeam = async () => {
