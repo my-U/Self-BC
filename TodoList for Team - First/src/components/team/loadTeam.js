@@ -1,11 +1,11 @@
 import { API } from '../../api/api.js';
 
-const teamButtonTemplate = ({ _id, name }) => {
+const teamButtonTemplate = (team) => {
     return `
-    <div id="${_id} "class="team-card-container">
+    <div id="${team._id} "class="team-card-container">
             <a href="./kanban.html" class="card">
             <div class="card-title">
-              ${name}
+              ${team.name}
             </div>
           </a>
         </div>
@@ -18,7 +18,7 @@ const createDeleteButtonTemplate = () => {
     `
 }
 
-export const loadTeams = async (teamName) => {
+export const loadTeams = async () => {
     const teams = await API.getTeams();
 
     const teamButton = teams.map((team) => teamButtonTemplate(team));
