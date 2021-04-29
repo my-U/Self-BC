@@ -2,7 +2,7 @@ import { API } from '../../api/api.js';
 
 const teamButtonTemplate = (team) => {
     return `
-    <div id="${team._id} "class="team-card-container">
+    <div id="${team._id}" class="team-card-container">
             <a href="./kanban.html" class="card">
             <div class="card-title">
               ${team.name}

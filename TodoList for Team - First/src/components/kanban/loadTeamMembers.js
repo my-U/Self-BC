@@ -5,6 +5,16 @@ const renderTeamName = (teamName) => {
     $userTitle.innerText = teamName;
 };
 
+const memberAddButton = () => {
+  return `
+    <li class="add-user-button-container">
+      <button id="add-user-button" class="ripple">
+        <span class="material-icons">add</span>
+      </button>
+    </li>
+  `
+};
+
 const memberTemplate = (member) => {
     return `
     <li class="todoapp-container" id="${member._id}">
@@ -34,95 +44,6 @@ const memberTemplate = (member) => {
                   </div>
                   <input class="edit" value="완료된 타이틀" />
                 </li>
-                <li class="todo-list-item">
-                  <div class="view">
-                    <input class="toggle" type="checkbox" />
-                    <label class="label">
-                      <div class="chip-container">
-                        <select class="chip select">
-                          <option value="0" selected>순위</option>
-                          <option value="1">1순위</option>
-                          <option value="2">2순위</option>
-                        </select>
-                      </div>
-                      해야할 아이템
-                    </label>
-                    <button class="destroy"></button>
-                  </div>
-                  <input class="edit" value="완료된 타이틀" />
-                </li>
-                <li class="todo-list-item">
-                  <div class="view">
-                    <input class="toggle" type="checkbox" />
-                    <label class="label">
-                      <div class="chip-container">
-                        <span class="chip primary">1순위</span>
-                        <select class="chip select hidden">
-                          <option value="0" selected>순위</option>
-                          <option value="1">1순위</option>
-                          <option value="2">2순위</option>
-                        </select>
-                      </div>
-                      <span class="todo-item-text">해야할 아이템</span>
-                    </label>
-                    <button class="delete"></button>
-                  </div>
-                  <input class="edit" value="완료된 타이틀" />
-                </li>
-                <li class="todo-list-item">
-                  <div class="view">
-                    <input class="toggle" type="checkbox" />
-                    <label class="label">
-                      <div class="chip-container">
-                        <span class="chip secondary">1순위</span>
-                        <select class="chip select hidden">
-                          <option value="0" selected>순위</option>
-                          <option value="1">1순위</option>
-                          <option value="2">2순위</option>
-                        </select>
-                      </div>
-                      해야할 아이템
-                    </label>
-                    <button class="destroy"></button>
-                  </div>
-                  <input class="edit" value="완료된 타이틀" />
-                </li>
-                <li class="todo-list-item completed">
-                  <div class="view">
-                    <input class="toggle" type="checkbox" checked />
-                    <label class="label">
-                      <div class="chip-container">
-                        <span class="chip primary">1순위</span>
-                        <select class="chip select hidden">
-                          <option value="0" selected>순위</option>
-                          <option value="1">1순위</option>
-                          <option value="2">2순위</option>
-                        </select>
-                      </div>
-                      완료된 아이템
-                    </label>
-                    <button class="destroy"></button>
-                  </div>
-                  <input class="edit" value="완료된 타이틀" />
-                </li>
-                <li class="todo-list-item editing">
-                  <div class="view">
-                    <input class="toggle" type="checkbox" checked />
-                    <label class="label">
-                      <div class="chip-container">
-                        <span class="chip primary">1순위</span>
-                        <select class="chip select hidden">
-                          <option value="0" selected>순위</option>
-                          <option value="1">1순위</option>
-                          <option value="2">2순위</option>
-                        </select>
-                      </div>
-                      수정중인 아이템
-                    </label>
-                    <button class="destroy"></button>
-                  </div>
-                  <input class="edit" value="수정중인 타이틀" />
-                </li>
               </ul>
             </section>
             <div class="count-container">
@@ -150,13 +71,11 @@ const memberTemplate = (member) => {
 
 export const loadTeamMembers = async (currentTeam) => {
     const team = await API.getTeam(currentTeam);
-    const members = team.members;
-    console.log(members);
+    const members = await team.members;
 
     const memberList = members.map((member) => memberTemplate(member));
-
     const $todoAppListContainer = document.querySelector('.todoapp-list-container');
-    $todoAppListContainer.innerHTML = memberList;
+    $todoAppListContainer.innerHTML = memberList + memberAddButton();
 
     renderTeamName(team.name);
 }

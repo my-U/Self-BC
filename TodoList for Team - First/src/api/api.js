@@ -55,8 +55,11 @@ export const API = {
         return request(`api/teams/${teamId}/members`);
     },
 
-    addTeamMember: (teamId) => {
-        return request(`api/teams/${teamId}/members`);
+    addTeamMember: (teamId, name) => {
+        const contents = {
+            name : name
+        }
+        return request(`api/teams/${teamId}/members`, option.post(contents));
     },
 
     loadMemberList: (teamId, memberId) => {

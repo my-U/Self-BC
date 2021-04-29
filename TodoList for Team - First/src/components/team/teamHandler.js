@@ -7,7 +7,7 @@ const teamList = ({ target }) => {
     }
     if(target.classList.contains('card')) {
         const selectedTeam = target.closest('div');
-        setCurrentTeam(selectedTeam.id);
+        setCurrentTeam(selectedTeam.id.trim());
     }
 }
 
