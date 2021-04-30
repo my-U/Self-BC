@@ -15,7 +15,7 @@ const multiTodoApp = ({ target }) => {
     }
 };
 
-const addMemberTodo = ({target}) => {
+const addMemberTodo = (target) => {
     addMemberList(target);
 };
 

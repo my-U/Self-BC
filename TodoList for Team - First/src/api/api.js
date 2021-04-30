@@ -66,11 +66,11 @@ export const API = {
         return request(`api/teams/${teamId}/members/${memberId}`);
     },
 
-    addMemberList: (teamId, memberId) => {
-        const contents = {
-            content : content
+    addMemberList: (teamId, memberId, contents) => {
+        const content = {
+            contents : contents
         }
-        return request(`api/teams/${teamId}/members/${memberId}/items`, option.post(contents));
+        return request(`api/teams/${teamId}/members/${memberId}/items`, option.post(content));
     },
 
     deleteMemberList: (teamId, memberId, itemId) => {
