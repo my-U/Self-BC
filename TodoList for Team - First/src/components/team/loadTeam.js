@@ -20,7 +20,7 @@ const createDeleteButtonTemplate = () => {
 
 export const loadTeams = async () => {
     const teams = await API.getTeams();
-
+    console.log(teams)
     const teamButton = teams.map((team) => teamButtonTemplate(team));
 
     const teamListContainer = document.querySelector('.team-list-container');

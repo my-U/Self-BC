@@ -15,6 +15,28 @@ const memberAddButton = () => {
   `
 };
 
+const memberListTemplate = (todo) => {
+  return `
+    <li class="todo-list-item" id="${todo._id}">
+      <div class="view">
+        <input class="toggle" type="checkbox" ${todo.isCompleted ? 'completed' : ""}/>
+        <label class="label">
+          <div class="chip-container">
+            <select class="chip select">
+              <option value="0" selected>순위</option>
+              <option value="1">1순위</option>
+              <option value="2">2순위</option>
+            </select>
+          </div>
+        ${todo.name}
+        </label>
+        <button class="destroy"></button>
+      </div>
+      <input class="edit" value="완료된 타이틀" />
+    </li>
+  `
+}
+
 const memberTemplate = (member) => {
     return `
     <li class="todoapp-container" id="${member._id}">
@@ -27,23 +49,7 @@ const memberTemplate = (member) => {
             </section>
             <section class="main">
               <ul class="todo-list">
-                <li class="todo-list-item">
-                  <div class="view">
-                    <input class="toggle" type="checkbox" />
-                    <label class="label">
-                      <div class="chip-container">
-                        <select class="chip select">
-                          <option value="0" selected>순위</option>
-                          <option value="1">1순위</option>
-                          <option value="2">2순위</option>
-                        </select>
-                      </div>
-                      해야할 아이템
-                    </label>
-                    <button class="destroy"></button>
-                  </div>
-                  <input class="edit" value="완료된 타이틀" />
-                </li>
+                ${memberListTemplate(member.todoList)}
               </ul>
             </section>
             <div class="count-container">
@@ -72,7 +78,7 @@ const memberTemplate = (member) => {
 export const loadTeamMembers = async (currentTeam) => {
     const team = await API.getTeam(currentTeam);
     const members = await team.members;
-
+    
     const memberList = members.map((member) => memberTemplate(member));
     const $todoAppListContainer = document.querySelector('.todoapp-list-container');
     $todoAppListContainer.innerHTML = memberList + memberAddButton();
