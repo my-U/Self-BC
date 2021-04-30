@@ -1,4 +1,5 @@
 import { API } from '../../api/api.js';
+import { loadMemberList } from './loadMemberList.js';
 
 const renderTeamName = (teamName) => {
     const $userTitle = document.querySelector('#user-title strong');
@@ -15,28 +16,6 @@ const memberAddButton = () => {
   `
 };
 
-const memberListTemplate = (todo) => {
-  return `
-    <li class="todo-list-item" id="${todo._id}">
-      <div class="view">
-        <input class="toggle" type="checkbox" ${todo.isCompleted ? 'completed' : ""}/>
-        <label class="label">
-          <div class="chip-container">
-            <select class="chip select">
-              <option value="0" selected>순위</option>
-              <option value="1">1순위</option>
-              <option value="2">2순위</option>
-            </select>
-          </div>
-        ${todo.name}
-        </label>
-        <button class="destroy"></button>
-      </div>
-      <input class="edit" value="${todo.name}" />
-    </li>
-  `
-}
-
 const memberTemplate = (member) => {
     return `
     <li class="todoapp-container" id="${member._id}">
@@ -49,7 +28,7 @@ const memberTemplate = (member) => {
             </section>
             <section class="main">
               <ul class="todo-list">
-                ${memberListTemplate(member.todoList)}
+                ${loadMemberList(member.todoList)}
               </ul>
             </section>
             <div class="count-container">

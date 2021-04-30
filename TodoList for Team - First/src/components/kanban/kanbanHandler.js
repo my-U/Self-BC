@@ -4,6 +4,7 @@ import { getCurrentTeam } from '../../util/localStorage.js';
 import { setCurrentMember } from '../../util/localStorage.js';
 import { addTeamMember } from './addTeamMember.js';
 import { addMemberList } from './addMemberList.js';
+import { loadMemberList } from './loadMemberList.js';
 
 const multiTodoApp = ({ target }) => {
     if(target.classList.contains('ripple')) { 

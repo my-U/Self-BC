@@ -62,7 +62,7 @@ export const API = {
         return request(`api/teams/${teamId}/members`, option.post(contents));
     },
 
-    loadMemberList: (teamId, memberId) => {
+    getMemberList: (teamId, memberId) => {
         return request(`api/teams/${teamId}/members/${memberId}`);
     },
 

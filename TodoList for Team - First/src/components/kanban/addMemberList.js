@@ -1,6 +1,7 @@
 import { API } from '../../api/api.js';
 import { getCurrentTeam, getCurrentMember } from '../../util/localStorage.js';
 import { MIN_MEMBER_TODO_LENGTH } from '../../constant/memberConstant.js';
+import { loadMemberList } from './loadMemberList.js';
 
 export const addMemberList = async ({target, key}) => {
     
@@ -10,7 +11,6 @@ export const addMemberList = async ({target, key}) => {
         const newTodo = target.value;
 
         await API.addMemberList(currentTeam, currentMember, newTodo);
-        
     } else {
         return '';
     }
