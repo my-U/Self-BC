@@ -18,12 +18,12 @@ const memberTodoListTemplate = (todo) => {
           <button class="destroy"></button>
         </div>
         <input class="edit" value="${todo.contents}" />
-      </li>
-    `
+      </li>`
   }
 
-export const loadMemberList = (todos) => {
+export const loadMemberTodo = (todos) => {
     const memberTodo = todos.map((todo) => memberTodoListTemplate(todo));
-    return memberTodo
+    const memberTodoList = memberTodo.join('');
+    return memberTodoList
     
 };

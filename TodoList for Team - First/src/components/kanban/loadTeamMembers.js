@@ -1,5 +1,5 @@
 import { API } from '../../api/api.js';
-import { loadMemberList } from './loadMemberList.js';
+import { loadMemberTodo } from './loadMemberTodo.js';
 
 const renderTeamName = (teamName) => {
     const $userTitle = document.querySelector('#user-title strong');
@@ -24,11 +24,11 @@ const memberTemplate = (member) => {
           </h2>
           <div class="todoapp">
             <section class="input-container">
-              <input class="new-todo" placeholder="할 일을 입력해주세요." autofocus />
+              <input class="new-todo" placeholder="할 일을 입력해주세요."/>
             </section>
             <section class="main">
               <ul class="todo-list">
-                ${loadMemberList(member.todoList)}
+                ${loadMemberTodo(member.todoList)}
               </ul>
             </section>
             <div class="count-container">
