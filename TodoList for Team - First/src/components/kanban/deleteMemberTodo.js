@@ -4,7 +4,7 @@ import { loadTeamMembers } from './loadTeamMembers.js';
 
 export const deleteMemberTodo = async (target) => {
     const currentTeam = getCurrentTeam();
-    const currentMember = getCurrentMember();
+    const currentMember = target.closest('li').parentElement.closest('li').id;
     const deleteTodo = target.closest('li').id;
     
     await API.deleteMemberTodo(currentTeam, currentMember, deleteTodo);

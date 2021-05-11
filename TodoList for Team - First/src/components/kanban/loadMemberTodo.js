@@ -13,7 +13,7 @@ const memberTodoListTemplate = (todo) => {
                 <option value="2">2순위</option>
               </select>
             </div>
-          ${todo.contents}
+            ${todo.contents}
           </label>
           <button class="destroy"></button>
         </div>

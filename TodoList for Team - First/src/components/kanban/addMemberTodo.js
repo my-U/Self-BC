@@ -5,14 +5,17 @@ import { loadTeamMembers } from './loadTeamMembers.js';
 
 export const addMemberTodo = async ({target, key}) => {
     
-    if(key === 'Enter' && target.value.length >= MIN_MEMBER_TODO_LENGTH) {
-        const currentTeam = getCurrentTeam();
-        const currentMember = getCurrentMember();
-        const newTodo = target.value;
+    if(target.classList.contains('new-todo')){
 
-        await API.addMemberTodo(currentTeam, currentMember, newTodo);
-        loadTeamMembers(currentTeam);
-    } else {
-        return '';
+        if(key === 'Enter' && target.value.length >= MIN_MEMBER_TODO_LENGTH) {
+            const currentTeam = getCurrentTeam();
+            const currentMember = getCurrentMember();
+            const newTodo = target.value;
+            
+            await API.addMemberTodo(currentTeam, currentMember, newTodo);
+            loadTeamMembers(currentTeam);
+        } else {
+            return '';
+        }
     }
 }

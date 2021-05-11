@@ -81,11 +81,11 @@ export const API = {
         return request(`api/teams/${teamId}/members/${memberId}/items/${itemId}/toggle`, option.put());
     },
 
-    editMemberTodo: (teamId, memberId, itemId) => {
-        const contents = {
-            content : content
+    editMemberTodo: (teamId, memberId, itemId, contents) => {
+        const content = {
+            contents : contents
         }
-        return request(`api/teams/${teamId}/members/${memberId}/items/${itemId}`, option.put(contents));
+        return request(`api/teams/${teamId}/members/${memberId}/items/${itemId}`, option.put(content));
     },
 
     priorityMemberTodo: (teamId, memberId, itemId) => {
