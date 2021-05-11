@@ -5,6 +5,7 @@ import { addTeamMember } from './addTeamMember.js';
 import { addMemberTodo } from './addMemberTodo.js';
 import { deleteMemberTodo } from './deleteMemberTodo.js';
 import { editMemberTodo } from './editMemberTodo.js';
+import { deleteMemberAllTodo } from './deleteMemberAllTodo.js';
 
 const multiTodoApp = ({ target }) => {
     if(target.classList.contains('ripple')) { 
@@ -16,6 +17,9 @@ const multiTodoApp = ({ target }) => {
     }
     else if(target.classList.contains('destroy')) {
         deleteMemberTodo(target);
+    }
+    else if(target.classList.contains('clear-completed')){
+        deleteMemberAllTodo(target);
     }
 };
 
