@@ -25,5 +25,4 @@ export const loadMemberTodo = (todos) => {
     const memberTodo = todos.map((todo) => memberTodoListTemplate(todo));
     const memberTodoList = memberTodo.join('');
     return memberTodoList
-    
 };

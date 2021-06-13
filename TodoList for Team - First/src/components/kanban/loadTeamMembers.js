@@ -2,8 +2,8 @@ import { API } from '../../api/api.js';
 import { loadMemberTodo } from './loadMemberTodo.js';
 
 const renderTeamName = (teamName) => {
-    const $userTitle = document.querySelector('#user-title strong');
-    $userTitle.innerText = teamName;
+  const $userTitle = document.querySelector('#user-title strong');
+  $userTitle.innerText = teamName;
 };
 
 const memberAddButton = () => {
@@ -19,7 +19,7 @@ const memberAddButton = () => {
 const memberTemplate = (member) => {
     return `
     <li class="todoapp-container" id="${member._id}">
-          <h2>
+          <h2> 
             <span><strong>${member.name}</strong>'s Todo List</span>
           </h2>
           <div class="todoapp">
@@ -32,7 +32,7 @@ const memberTemplate = (member) => {
               </ul>
             </section>
             <div class="count-container">
-              <span class="todo-count">총 <strong>0</strong> 개</span>
+              <span class="todo-count">총 <strong>${member.todoList.length}</strong> 개</span>
               <ul class="filters">
                 <li>
                   <a href="#all" class="selected">전체보기</a>
@@ -61,6 +61,6 @@ export const loadTeamMembers = async (currentTeam) => {
     const memberList = members.map((member) => memberTemplate(member));
     const $todoAppListContainer = document.querySelector('.todoapp-list-container');
     $todoAppListContainer.innerHTML = memberList + memberAddButton();
-
+    
     renderTeamName(team.name);
 }
