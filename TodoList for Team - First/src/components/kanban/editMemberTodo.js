@@ -11,7 +11,6 @@ export const editMemberTodo = async (target) => {
 
     const $li = target.closest('li');
     const editInput = $li.querySelector('.edit');
-    console.log(target)
     
     if($li.classList.contains('todo-list-item')) {
         $li.classList.add('editing');

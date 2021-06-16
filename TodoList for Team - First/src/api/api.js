@@ -88,7 +88,7 @@ export const API = {
         return request(`api/teams/${teamId}/members/${memberId}/items/${itemId}`, option.put(content));
     },
 
-    priorityMemberTodo: (teamId, memberId, itemId) => {
+    priorityMemberTodo: (teamId, memberId, itemId, priority) => {
         const contents = {
             priority : priority
         }
