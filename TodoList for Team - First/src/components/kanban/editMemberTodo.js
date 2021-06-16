@@ -3,8 +3,11 @@ import { getCurrentTeam } from '../../util/localStorage.js';
 import { loadMemberTodo } from './loadMemberTodo.js';
 import { loadTeamMembers } from './loadTeamMembers.js';
 
-export const editMemberTodo = async (target) => {
-
+export const editMemberTodo = async ({target}) => {
+    if(!target.classList.contains('label')){
+        return ;
+    }
+    
     const currentTeam = getCurrentTeam();
     const currentMember = target.closest('li').parentElement.closest('li').id;
     const currentTodo = target.closest('li').id;

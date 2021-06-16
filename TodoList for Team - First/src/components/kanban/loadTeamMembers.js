@@ -17,7 +17,7 @@ const memberAddButton = () => {
 };
 
 const memberTemplate = (member) => {
-    return `
+  return `
     <li class="todoapp-container" id="${member._id}">
           <h2> 
             <span><strong>${member.name}</strong>'s Todo List</span>

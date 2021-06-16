@@ -7,6 +7,8 @@ import { deleteMemberTodo } from './deleteMemberTodo.js';
 import { editMemberTodo } from './editMemberTodo.js';
 import { deleteMemberAllTodo } from './deleteMemberAllTodo.js';
 import { changePriorityMemberTodo } from './changePriorityMemberTodo.js';
+import { toggleMemberTodo } from './toggleMemberTodo.js';
+import { filterMemberTodo } from './filterMemberTodo.js';
 
 const multiTodoApp = ({ target }) => {
     if(target.classList.contains('ripple')) { 
@@ -22,26 +24,22 @@ const multiTodoApp = ({ target }) => {
     else if(target.classList.contains('clear-completed')){
         deleteMemberAllTodo(target);
     }
-    else if(target.classList.contains('chip')){
-        changePriorityMemberTodo(target);
+    else if(target.classList.contains('toggle')){
+        toggleMemberTodo(target);
+    }
+    else if(target.classList.contains('filters')){
+        filterMemberTodo(target)
     }
 };
-
-const addMemberTodoApp = (target) => {
-    addMemberTodo(target);
-};
-
-const editMemberTodoApp = ({target}) => {
-    editMemberTodo(target);
-}
 
 export const kanbanHandler = async () => {
     const $todoAppListContainer = document.querySelector('.todoapp-list-container');
 
     $todoAppListContainer.addEventListener('click', multiTodoApp);
-    $todoAppListContainer.addEventListener('keyup', addMemberTodoApp);
-    $todoAppListContainer.addEventListener('dblclick', editMemberTodoApp);
-    
+    $todoAppListContainer.addEventListener('keyup', addMemberTodo);
+    $todoAppListContainer.addEventListener('dblclick', editMemberTodo);
+    $todoAppListContainer.addEventListener('change', changePriorityMemberTodo);
+
     const currentTeam = getCurrentTeam();
     loadTeamMembers(currentTeam);
 };
